@@ -188,7 +188,7 @@ The outside interface receives its address from the Bell Giga Hub network.
 
 NAT / PAT
 
-The ASA is configured with PAT to provide Internet access for internal networks.
+The ASA is configured with PAT to provide internal networks with Internet access.
 
 Internal networks include:
 ````
@@ -218,8 +218,8 @@ The packet-tracer result showed:
 ````
 NAT ALLOW
 Action: allow
-Kali Linux
 ````
+#Kali Linux
 Kali Linux is deployed as VM 101 on Proxmox.
 ````
 Configuration
