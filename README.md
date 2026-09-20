@@ -1,6 +1,6 @@
 # Enterprise Cybersecurity Homelab
 
-Enterprise-style cybersecurity homelab built using Cisco networking equipment, a Dell PowerEdge server, Proxmox VE, Kali Linux, and intentionally vulnerable systems.
+An enterprise-style cybersecurity homelab built with Cisco networking equipment, a Dell PowerEdge server, Proxmox VE, Kali Linux, and intentionally vulnerable systems.
 
 The goal of this project is to gain hands-on experience in:
 
