@@ -232,14 +232,12 @@ Bridge:     vmbr0
 Kali is used as the penetration-testing workstation.
 
 Tools used include:
-
-Nmap
 ````
-Metasploit Framework
-SearchSploit
-FTP enumeration tools
-Network troubleshooting utilities
-Metasploitable 2
+- Nmap
+- Metasploit Framework
+- SearchSploit
+- FTP enumeration tools
+- Network troubleshooting utilities
 ````
 Metasploitable 2 is deployed as VM 102.
 
