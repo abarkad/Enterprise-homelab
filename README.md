@@ -77,8 +77,11 @@ VLAN 1 - Management / Internal Network
 | Proxmox          | `192.168.1.10/24` |
 | Network          | `192.168.1.0/24`  |
 ````
-The Cisco ASA provides the default gateway for the internal network.
-The Cisco 3750G provides Layer 3 switching and routing between VLANs.
+The Cisco ASA provides the default gateway for the VLAN 1 internal
+network and serves as the Internet edge firewall.
+
+The Cisco 3750G provides the Layer 3 SVI for VLAN 50 and performs
+inter-VLAN routing between the security lab and the internal network.
 ````
 VLAN 50 - Security Lab
 VLAN Name: SECURITY-LAB
