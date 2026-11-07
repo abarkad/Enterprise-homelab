@@ -15,7 +15,8 @@ The lab simulates a small enterprise network where I practice networking, firewa
 - [Hardware](#hardware)
 - [Component summary](#component-summary)
 - [Penetration testing](#penetration-testing)
-- [Troubleshooting highlights](#troubleshooting-highlights)
+- [Labs](#labs)
+- [Troubleshooting](#troubleshooting)
 - [Skills demonstrated](#skills-demonstrated)
 - [Repository structure](#repository-structure)
 - [Project status](#project-status)
@@ -112,7 +113,36 @@ Reconnaissance → Enumeration → Vulnerability research → Exploitation → P
 
 ---
 
-## Troubleshooting highlights
+## Labs
+
+Smaller, focused labs built on the main environment, each with configuration, verification and a break/fix exercise. Full index: [labs/](labs/README.md)
+
+| # | Lab | Topics |
+| - | --- | ------ |
+| 01 | [VLANs and 802.1Q trunking](labs/01-vlan-trunking/README.md) | VLAN 20, SVIs, trunk allowed lists, VLAN-tagged VMs |
+| 02 | [NAT, PAT and port forwarding](labs/02-nat-port-forwarding/README.md) | ASA object NAT, static PAT, outside ACL, `packet-tracer` |
+| 03 | [DHCP server and relay](labs/03-dhcp-server-relay/README.md) | DHCP pools, DORA, `ip helper-address` |
+| 04 | [ACLs and port security](labs/04-acl-port-security/README.md) | VLAN 50 isolation, VTY access-class, err-disable |
+| 05 | [IPv6 dual stack](labs/05-ipv6-dual-stack/README.md) | SDM template, IPv6 SVIs, SLAAC |
+
+---
+
+## Troubleshooting
+
+### Break/fix scenarios
+
+Faults introduced on purpose and diagnosed like support tickets: symptoms → hypotheses → evidence → root cause → fix → verification. Full index: [troubleshooting/](troubleshooting/README.md)
+
+| ID | Scenario | Layer |
+| -- | -------- | ----- |
+| [TS-01](troubleshooting/TS-01-trunk-missing-vlan.md) | VLAN missing from the trunk allowed list | L2 |
+| [TS-02](troubleshooting/TS-02-asa-missing-return-route.md) | ASA missing the return route to VLAN 50 | L3 |
+| [TS-03](troubleshooting/TS-03-wrong-default-gateway.md) | Wrong default gateway on a host | L3 |
+| [TS-04](troubleshooting/TS-04-vlan-deleted-svi-down.md) | VLAN deleted, SVI up/down | L2/L3 |
+| [TS-05](troubleshooting/TS-05-asa-nat-missing.md) | NAT rule missing for a subnet | NAT |
+| [TS-06](troubleshooting/TS-06-proxmox-vm-missing-vlan-tag.md) | Proxmox VM missing its VLAN tag | L2 (virtual) |
+
+### Issues hit while building the lab
 
 The lab was built and debugged one hop at a time, bottom-up through the OSI model:
 
@@ -146,6 +176,8 @@ Enterprise-homelab/
 ├── diagrams/                     # draw.io diagrams (editable .drawio.svg)
 │   ├── physical-topology.drawio.svg
 │   └── logical-topology.drawio.svg
+├── labs/                         # Smaller focused labs (01–05)
+├── troubleshooting/              # Break/fix scenarios (TS-01–06) + template
 ├── configs/                      # Sanitized device configurations
 │   └── README.md
 ├── docs/
@@ -182,6 +214,8 @@ Enterprise-homelab/
 
 - [ ] Publish sanitized device configurations in [`configs/`](configs/README.md)
 - [ ] Restrict VLAN 50 with ACLs ([hardening plan](docs/hardening.md))
+- [ ] Labs 01–05 ([labs/](labs/README.md))
+- [ ] Break/fix scenarios TS-01–06 ([troubleshooting/](troubleshooting/README.md))
 - [ ] Expand penetration-testing exercises
 - [ ] Build additional vulnerable targets
 - [ ] Develop defensive security exercises
