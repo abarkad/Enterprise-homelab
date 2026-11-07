@@ -25,25 +25,15 @@ The lab simulates a small enterprise network where I practice networking, firewa
 
 ## Lab architecture
 
-```mermaid
-flowchart TD
-    NET([Internet]) --- HUB["Bell Giga Hub<br/>192.168.2.1"]
-    HUB -- "DHCP" --- ASA["Cisco ASA 5505<br/>outside 192.168.2.29 · inside 192.168.1.1<br/>PAT to outside"]
-    ASA --- SW["Cisco 3750G L3 switch<br/>VLAN 1 SVI 192.168.1.2<br/>VLAN 50 SVI 192.168.50.1"]
-    SW --- PC["Desktop PC<br/>Management workstation<br/>VLAN 1"]
-    SW -- "802.1Q trunk Gi1/0/24<br/>VLAN 1, 50" --- PVE["Dell PowerEdge R320<br/>Proxmox VE · vmbr0 192.168.1.10"]
-
-    subgraph LAB["VLAN 50 · SECURITY-LAB · 192.168.50.0/24"]
-        KALI["VM 101 · Kali Linux<br/>192.168.50.10"]
-        MSF["VM 102 · Metasploitable 2<br/>192.168.50.20<br/>no default gateway"]
-    end
-    PVE --- KALI
-    PVE --- MSF
-```
+<p align="center">
+  <img src="diagrams/logical-topology.drawio.svg" width="820" alt="Logical topology">
+</p>
 
 > The first version of the physical topology (before VLAN 50 was built) is kept for reference: [`screenshots/initial-physical-topology.png`](screenshots/initial-physical-topology.png).
 
-More detail: [docs/topology.md](docs/topology.md)
+Physical topology, traffic paths and details: [docs/topology.md](docs/topology.md)
+
+> Diagrams are made with [draw.io](https://www.drawio.com/). The `.drawio.svg` files in [`diagrams/`](diagrams/) embed the editable diagram, so they can be opened and edited directly in draw.io.
 
 ---
 
@@ -153,6 +143,9 @@ Full write-up: [docs/troubleshooting.md](docs/troubleshooting.md)
 ```text
 Enterprise-homelab/
 ├── README.md
+├── diagrams/                     # draw.io diagrams (editable .drawio.svg)
+│   ├── physical-topology.drawio.svg
+│   └── logical-topology.drawio.svg
 ├── configs/                      # Sanitized device configurations
 │   └── README.md
 ├── docs/
